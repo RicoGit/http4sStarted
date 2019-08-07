@@ -1,0 +1,1 @@
+Pure functional scaffolding for Http server with cats, cats-effect, htt4s and doobie
