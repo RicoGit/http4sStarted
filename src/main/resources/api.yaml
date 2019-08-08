@@ -1,0 +1,83 @@
+openapi: "3.0.0"
+info:
+  title:  My Library API
+  version: 0.0.1
+tags:
+  - name: library
+paths:
+  /book:
+    get:
+      tags: [book]
+      operationId: getBook
+      summary: Returns one book
+      parameters:
+        - $ref: '#/components/parameters/NameParam'
+      responses:
+        '200':
+          description: Book information by name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookResponse'
+
+      x-scala-package: book
+
+components:
+
+  parameters:
+
+    NameParam:
+      name: name
+      in: query
+      description: String name of whatever
+      schema:
+        type: string
+
+
+  schemas:
+
+    BookResponse:
+      type: object
+      properties:
+        book:
+          $ref: '#/components/schemas/Book'
+
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+        authors:
+          type: array
+          "items": {
+            "$ref": "#/components/schemas/Author"
+          }
+        name:
+          type: string
+        description:
+          type: string
+        year:
+          type: integer
+        publishing:
+          type: string
+      required:
+        - id
+        - authors
+        - name
+
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateBirth:
+          type: string
+          format: date
+      required:
+          - id
+          - lastName
+          - name
