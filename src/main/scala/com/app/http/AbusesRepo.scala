@@ -11,7 +11,7 @@ object AbusesRepo {
   case class RepoConfig()
 
   def apply[F[_]: Effect](config: RepoConfig): F[AbusesRepo[F]] = {
-    val transactor: F[Transactor[F]] = ??? // todo finish
+    val transactor: F[Transactor[F]] = null.asInstanceOf[Transactor[F]].pure[F] // todo finish
     transactor.map(new AbusesRepo(_))
   }
 

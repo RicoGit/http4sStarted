@@ -79,5 +79,6 @@ components:
           format: date
       required:
           - id
+          - firstName
           - lastName
           - name

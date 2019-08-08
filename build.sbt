@@ -1,6 +1,7 @@
 name := "http4sStarter"
 version := "0.1"
 scalaVersion := "2.12.8"
+scalafmtOnCompile := true
 
 scalacOptions ++= Seq(
   "-deprecation",
